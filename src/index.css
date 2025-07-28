@@ -1,13 +1,329 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Open+Sans:wght@400;600&display=swap');
+
+
 body {
-  font-family: Georgia, serif;
+  font-family: 'Open Sans', sans-serif;
   background-color: #f8f8f8;
+  color: #333;
   margin: 0;
   padding: 0;
 }
 
-#logo-image {
-  width: 30px;
-  margin-right: 10px;
+h1, h2, h3, .book-card .info a, .nav-link {
+  font-family: 'Merriweather', serif;
+  color: #222;
 }
 
-/* Add your own custom styles here */
+h1 {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #e0e0e0;
+  margin: 0;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  margin: 10px 0;
+  color: #666;
+}
+
+
+#logo-image {
+  width: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+.navbar {
+  background: linear-gradient(90deg, #0066ff, #0088ff);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0.75rem 0;
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #ffeb3b;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ffeb3b;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #ffeb3b;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+.logout-btn {
+  font-family: inherit;
+}
+
+
+.App {
+  padding: 20px;
+}
+
+.content {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.filter-bar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.filter-options {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.filter-option input {
+  margin: 0;
+  margin-right: 0.5rem;
+  transform: scale(1.1);
+}
+
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.book-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.book-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  background-color: #fffdfd;
+}
+
+.book-card .cover {
+  width: 100%;
+  height: 0;
+  padding-top: 140%;
+  position: relative;
+  background: #f4f4f4;
+}
+
+.book-card .cover img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .cover img {
+  transform: scale(1.02);
+}
+
+.book-card .info {
+  padding: 0.75rem 0.5rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.book-card .info a {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.book-card .info a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #007BFF;
+  transition: width 0.3s ease;
+}
+
+.book-card .info a:hover,
+.book-card:hover .info a {
+  color: #007BFF;
+  transform: translateY(-2px);
+}
+
+.book-card .info a:hover::after,
+.book-card:hover .info a::after {
+  width: 100%;
+}
+
+.book-card .info p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.4rem 0 0;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+
+input, button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+input {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007BFF;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .nav-link,
+.navbar .nav-link.logout-btn {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
